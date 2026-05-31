@@ -125,8 +125,10 @@ public class GestorTiendaOnline {
 
     // ─── 10. FILTRAR POR ESTADO (Stream)
     public void filtrarPorEstado(String estado) {
+
         System.out.println("\n══ FILTRO POR ESTADO: " + estado + " ══");
         List<PedidoOnline> resultado = listaGeneral.stream()
+
                 .filter(p -> p.getEstado().equalsIgnoreCase(estado))
                 .collect(Collectors.toList());
 
@@ -139,6 +141,7 @@ public class GestorTiendaOnline {
 
     // ─── 11. ORDENAR POR PRECIO (Stream)
     public void ordenarPorPrecio() {
+
         System.out.println("\n══ PEDIDOS ORDENADOS POR PRECIO ══");
         listaGeneral.stream()
                 .sorted(Comparator.comparingDouble(PedidoOnline::getPrecio))
@@ -147,6 +150,7 @@ public class GestorTiendaOnline {
 
     // ─── 12. AGRUPAR POR ESTADO (Stream)
     public void agruparPorEstado() {
+
         System.out.println("\n══ AGRUPADOS POR ESTADO ══");
         Map<String, List<PedidoOnline>> grupos = listaGeneral.stream()
                 .collect(Collectors.groupingBy(PedidoOnline::getEstado));
@@ -160,6 +164,7 @@ public class GestorTiendaOnline {
     // ─── 13. ESTADÍSTICAS (Stream)
     public void mostrarEstadisticas() {
         if (listaGeneral.isEmpty()) {
+
             System.out.println("Sin datos para estadísticas.");
             return;
         }
@@ -179,6 +184,7 @@ public class GestorTiendaOnline {
     public void buscarConStream(String nombre) {
         System.out.println("\n══ BÚSQUEDA POR CLIENTE: " + nombre + " ══");
         listaGeneral.stream()
+
                 .filter(p -> p.getNombreCliente().toLowerCase()
                         .contains(nombre.toLowerCase()))
                 .forEach(System.out::println);
